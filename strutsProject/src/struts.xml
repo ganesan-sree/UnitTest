@@ -1,35 +1,32 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
 
-	<!-- Allows to disable dynamic method invocation from the URL -->
-	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+   <constant name="struts.devMode" value="true" />
 
-	<!-- Whether Struts is in development mode or not -->
-	<constant name="struts.devMode" value="false" />
+ 	<package name="lovekusurvey" extends="struts-default">
+ 	
+ 	     <global-results>
+  		  <result name="error">/error.jsp</result>
+  		 </global-results>
+  		
 
-	<!-- The URL extension to use to determine if the request is meant for a 
-		Struts action -->
-	<constant name="struts.action.extension" value="" />
+	    <global-exception-mappings>
+	        <exception-mapping exception="java.lang.Exception" result="error" />
+	   	</global-exception-mappings>
+ 	
+	   <action name="index">
+	   	<result>/survey.jsp</result>
+	   </action>
+	   
+	   <action name="saveAnswer" class="edu.ku.it.si.lovekusurvey.action.SurveyAction">
+	   	<result name="input">/survey.jsp</result>
+	   	<result name="success">/surveycompleted.jsp</result>
+	   </action>
+      
+   </package>
 
-	<!-- Comma separated list of patterns (java.util.regex.Pattern) to be excluded 
-		from Struts2-processing . If the value of the pattern is ws means it will 
-		not exclude from Struts2-processing -->
-	<constant name="struts.action.excludePattern" value="/ws/.*" />
-	
-	
-	
-	<package name="site" extends="struts-default">
-  <action name="deletePerson" class="org.unittest.PersonAction"      method="deletePerson">
-   <result name="success">/WEB-INF/pages/person.jsp</result>
-  </action>
- </package>
- 
-
-	
-	
-	
 </struts>

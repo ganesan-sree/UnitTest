@@ -7,17 +7,15 @@
               http://www.springframework.org/schema/context
               http://www.springframework.org/schema/context/spring-context-2.5.xsd">
               
-  <bean id="surveyDao" class="edu.ku.it.si.lovekusurvey.dao.SurveyDaoNoDB">
+    <bean id="surveyDao" class="edu.ku.it.si.lovekusurvey.dao.SurveyDaoNoDB">
     	<property name="totalNotSureAnswers" value="12" />
     	<property name="totalNoAnswers" value="23" />
     	<property name="totalYesAnswers" value="71" />
     </bean>     
     
-    <!-- This bean will be provided to the Struts SurveyAction class for the
-    value for its SurveyService property -->
     <bean id="surveyService" class="edu.ku.it.si.lovekusurvey.service.SurveyServiceImpl">
     	<property name="surveyDao" ref="surveyDao" />
-    </bean>          
+    </bean>     
   
 
 

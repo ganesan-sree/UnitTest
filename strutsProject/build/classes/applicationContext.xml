@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:jaxws="http://cxf.apache.org/jaxws"	
-	xsi:schemaLocation="
-        
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
-          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
-
-
-
-
-
-
-
-	 <bean id="personAction"
-  class="org.unittest.PersonAction"/>
-	
-	
-	
-
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+              http://www.springframework.org/schema/context
+              http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+              
+  <bean id="surveyDao" class="edu.ku.it.si.lovekusurvey.dao.SurveyDaoNoDB">
+    	<property name="totalNotSureAnswers" value="12" />
+    	<property name="totalNoAnswers" value="23" />
+    	<property name="totalYesAnswers" value="71" />
+    </bean>     
+    
+    <!-- This bean will be provided to the Struts SurveyAction class for the
+    value for its SurveyService property -->
+    <bean id="surveyService" class="edu.ku.it.si.lovekusurvey.service.SurveyServiceImpl">
+    	<property name="surveyDao" ref="surveyDao" />
+    </bean>          
+  
 
 
 </beans>
